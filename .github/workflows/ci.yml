@@ -23,12 +23,12 @@ jobs:
           args: --coverage-text
 
   deploy_dev:
-    needs: [lint, tests]
-    if: github.ref == 'refs/heads/deploy_dev'
+#     needs: [lint, tests]
+#     if: github.ref == 'refs/heads/deploy_dev'
     runs-on: ubuntu-latest    
     steps:
       - uses: actions/checkout@v2
-      - run: ls
+      - run: git clone ${Secrets.REPOSITORY_URL}
   
   deploy_prod:
     needs: [lint, tests]
