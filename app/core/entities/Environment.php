@@ -23,7 +23,7 @@ class Environment {
         $this->host = $host;
         $this->uri = $uri;
         $this->templateDir = $templateDir;
-        $this->serviceDir = $serviceName;
+        $this->serviceName = $serviceName;
     }
     
     public function getRootDir() : string {
