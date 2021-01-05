@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest    
     steps:
       - uses: actions/checkout@v2
-      - run: git clone ${Secrets.REPOSITORY_URL}
+      - run: git clone ${{Secrets.REPOSITORY_URL}}
   
   deploy_prod:
     needs: [lint, tests]
