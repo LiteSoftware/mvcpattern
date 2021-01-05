@@ -21,7 +21,17 @@ jobs:
         with:
           configuration: tests/phpunit.xml
           args: --coverage-text
-  deploy:
+  deploy_dev:
+    needs: [lint, tests]
+    if: github.ref == 'refs/heads/deploy_dev'
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v2
+      - run: ls
+  
+  deploy_prod:
+    needs: [lint, tests]
+    if: github.ref == 'refs/heads/deploy_prod'
     runs-on: ubuntu-latest    
     steps:
       - uses: actions/checkout@v2
