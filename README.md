@@ -1,9 +1,11 @@
-MVC v0.1
+## MVC pattern v0.1
+The framework is designed for a quick start of a project on php
 
-Инструкция:
-1. Изменить в htaccess
-RewriteBase /project_name/
+## How to use ?
+1. composer update
 
-2. Изменить DEFAULT_SERVICE_DIRNAME в
+2. Change in htaccess
+RewriteBase / project_name /
+
+3. Change DEFAULT_SERVICE_DIRNAME to
 ProductionSystemConfigRepository
- 
