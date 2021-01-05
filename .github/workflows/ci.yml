@@ -1,24 +1,52 @@
-name: CI
-
+name: PHP CI
 on: [push]
 
 jobs:
-  build-test:
+  lint:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
-      - uses: php-actions/composer@dynamic-docker
-
+      - uses: php-actions/phpstan@v2
+        with:
+          configuration: phpstan.neon.dist
+  
+  tests:
+    runs-on: ubuntu-latest    
+    steps:
+      - uses: actions/checkout@v2
+      - uses: php-actions/composer@v1
       - name: PHPUnit Tests
-        uses: php-actions/phpunit@dynamic-docker
+        uses: php-actions/phpunit@v9
         with:
           configuration: tests/phpunit.xml
           args: --coverage-text
+        
+  
+##################################
+
+
+
+# name: CI
+
+# on: [push]
+
+# jobs:
+#   build-test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v2
+
+#       - uses: php-actions/composer@dynamic-docker
+
+#       - name: PHPUnit Tests
+#         uses: php-actions/phpunit@dynamic-docker
+#         with:
+#           configuration: tests/phpunit.xml
+#           args: --coverage-text
           
-      - name: PHPStan Static Analysis
-        uses: php-actions/phpstan@v2
-        with:
-          configuration: phpstan.neon.dist
-          memory_limit: 256M
+#       - name: PHPStan Static Analysis
+#         uses: php-actions/phpstan@v2
+#         with:
+#           configuration: phpstan.neon.dist
+#           memory_limit: 256M
