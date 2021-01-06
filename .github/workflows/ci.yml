@@ -32,6 +32,8 @@ jobs:
       - run: echo "${{Secrets.PRIVATE_KEY}}" >> ~/.ssh/id_rsa
       - run: echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCLtcf5zxbAWZ79hxorU4YLwfmvqu08+dPGdJV1pBrFJbwGQyMOraTjoBG8IXUwl1R1FKQp144qzDR5gEOC1ykkXI98XMrBXev3BvFiM5NfYZP+v4uzW441IhoGtA6ZS3JS4j/O7j8UkJgxP3rSWtZLa2203YvIPdvKw2ECApgqowrbTOv27vEQJPjp8u6fEOpe3y0t7Tq8w1qhkG6oopd06fBcnIy+AIwrIZhfD1POi9e4fqJExVQX4i2/bjxR7zb1sDAv37tAycDyC8SnbEi5OYHgRKBeMg/X1i7790fWHiLLbH0e+vquDOw+UYnTjokMT1ARKf/vXxTN+rbESfj redmal@redmal-HP-255-G4-Notebook-PC" >> ~/.ssh/id_rsa.pub
       - run: cd ~/.ssh && ls -a
+      - run: cd ~/.ssh/ && touch config
+      - run: echo IdentityFile ~/.ssh/id_rsa >> ./config
       - run: eval "$(ssh-agent -s)"
       - run: ssh-add ~/.ssh/id_rsa
       - run: git clone git@bitbucket.org:redmal/securconfig.git
