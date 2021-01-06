@@ -29,8 +29,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: mkdir ~/.ssh; chmod 711 ~/.ssh
-      - run: echo ${{Secrets.PRIVATE_KEY}} >> ~/.ssh/id_rsa
-      - run: git clone git@bitbucket.org:redmal/securconfig.git
+ #     - run: echo ${{Secrets.PRIVATE_KEY}} >> ~/.ssh/id_rsa
+ #     - run: git clone git@bitbucket.org:redmal/securconfig.git
       - run: ls -a
   
   deploy_prod:
