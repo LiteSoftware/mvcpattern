@@ -33,7 +33,7 @@ jobs:
       - run: echo IdentityFile ~/.ssh/id_rsa >> ~/.ssh/config
       - run: cd ~/.ssh && ls -a
       - run: exec ssh-agent bash
-      - run: ssh-add ~/.ssh/id_rsa
+      - run: ssh-add - <<< "${{ Secrets.PRIVATE_KEY }}"
       - run: git clone git@bitbucket.org:redmal/securconfig.git
            
   deploy_prod:
