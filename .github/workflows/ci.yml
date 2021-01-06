@@ -28,11 +28,13 @@ jobs:
     runs-on: ubuntu-latest    
     steps:
       - uses: actions/checkout@v2
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       - run: mkdir ~/.ssh; chmod 711 ~/.ssh
       - run: echo "${{Secrets.PRIVATE_KEY}}" >> ~/.ssh/id_rsa
-      - run: echo IdentityFile ~/.ssh/id_rsa >> ~/.ssh/config
       - run: cd ~/.ssh && ls -a
-      - run: eval $(ssh-agent)
+      - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - run: ssh-agent -a $SSH_AUTH_SOCK > /dev/null
       - run: ssh-add - <<< "${{ Secrets.PRIVATE_KEY }}"
       - run: git clone git@bitbucket.org:redmal/securconfig.git
            
