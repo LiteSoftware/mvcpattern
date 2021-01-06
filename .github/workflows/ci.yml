@@ -29,10 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: mkdir ~/.ssh; chmod 711 ~/.ssh
-      - run: touch ~/.ssh/id_rsa
+      #- run: touch ~/.ssh/id_rsa
       - run: echo "${{Secrets.PRIVATE_KEY}}" >> ~/.ssh/id_rsa
       - run: cd ~/.ssh && ls -l id_rsa
-      - run: eval `ssh-agent -s`
       - run: ssh-add ~/.ssh/id_rsa 
       - run: git clone git@bitbucket.org:redmal/securconfig.git
            
