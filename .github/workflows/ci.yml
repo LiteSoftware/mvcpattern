@@ -31,6 +31,8 @@ jobs:
 #         env:
 #           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       - run: echo ~
+      - run: cd ~
+      - run: ls
       - run: mkdir ~/.ssh; chmod 711 ~/.ssh
       - run: echo "${{Secrets.PRIVATE_KEY}}" >> ~/.ssh/id_rsa
       - run: cd ~/.ssh && ls -a
@@ -39,4 +41,4 @@ jobs:
       - run: git config --list
 #       - run: ssh-agent --a $SSH_AUTH_SOCK > /dev/null
       - run: ssh-add ~/.ssh/id_rsa
-      - run: git clone git@bitbucket.org:redmal/securconfig.git
+#       - run: git clone git@bitbucket.org:redmal/securconfig.git
