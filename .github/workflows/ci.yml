@@ -37,10 +37,11 @@ jobs:
       - run: echo "${{Secrets.PRIVATE_KEY}}" >> ~/.ssh/id_rsa
       - run: cd ~/.ssh && ls -a
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - run: eval 'ssh-agent -s'
+#       - run: eval 'ssh-agent -s'
       - run: sudo ssh-agent
-      - run: git config --list
+      - run: set | grep SSH_
+#       - run: git config --list
       - run: ssh-add -l
 #       - run: ssh-agent --a $SSH_AUTH_SOCK > /dev/null
-      - run: ssh-add ~/.ssh/id_rsa
+#       - run: ssh-add ~/.ssh/id_rsa
 #       - run: git clone git@bitbucket.org:redmal/securconfig.git
