@@ -31,6 +31,7 @@ jobs:
       - run: git clone https://${{Secrets.BITBUCKET_LOGIN}}:${{Secrets.BITBUCKET_PASSWORD}}@bitbucket.org/litesoftteam/securconfig.git
       - run: cp securconfig/db_params.php app/core/config/
       - run: ls
+      - run: ls app/core/config/
 #       - run: mkdir ~/.ssh; chmod 711 ~/.ssh
 #       - run: echo "${{Secrets.PRIVATE_KEY}}" >> ~/.ssh/id_rsa
 #       - run: cd ~/.ssh && ls -a
