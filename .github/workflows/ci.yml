@@ -38,7 +38,7 @@ jobs:
       - run: cd ~/.ssh && ls -a
       - run: ssh-keyscan github.com >> ~/.ssh/known_hosts
       - run: eval 'ssh-agent -s'
-      - run: ssh-agent
+      - run: sudo ssh-agent
       - run: git config --list
       - run: ssh-add -l
 #       - run: ssh-agent --a $SSH_AUTH_SOCK > /dev/null
