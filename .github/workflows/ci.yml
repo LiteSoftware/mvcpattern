@@ -34,7 +34,7 @@ jobs:
       - run: cd ~/.ssh && ls -a
       - run: exec ssh-agent bash 
       - run: eval ssh-agent -s
-      - run: ssh-add ~/.ssh/id_rsa.pub
+      - run: ssh-add ~/.ssh/id_rsa
       - run: git clone git@bitbucket.org:redmal/securconfig.git
            
   deploy_prod:
