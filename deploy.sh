@@ -23,7 +23,6 @@ else PROJECT_DIR
 	ssh gvozde0m_develop@gvozde0m.beget.tech "cat ~/id_rsa.pub >> ~/.ssh/authorized_keys"
 	ssh gvozde0m_develop@gvozde0m.beget.tech "chmod 600 ~/.ssh/authorized_keys"
 	ssh gvozde0m_develop@gvozde0m.beget.tech "rm ~/id_rsa.pub"
-
 fi
 
 	scp gvozde0m_develop@gvozde0m.beget.tech:$SERVER_PB_KEY $SERVER_PB_KEY2
