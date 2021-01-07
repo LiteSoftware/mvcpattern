@@ -37,7 +37,7 @@ jobs:
       - run: ls app/core/config/
       
       - run: echo ${{ github.repository }}
-      - run: echo ${{ github.actor }}
+      - run: echo $GITHUB_ACTIONS
       
       - run: echo ${${{ github.repository }}#${{ github.actor }}}
 
