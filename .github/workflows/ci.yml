@@ -51,7 +51,6 @@ jobs:
       
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "ls"
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "rm -R $REPO_NAME"
-      - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "mkdir $REPO_NAME"
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "ls"
       
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" rsync -av -e ssh --exclude '.gitignore' --exclude '.git' --exclude 'composer.lock' $PWD gvozde0m_develop@gvozde0m.beget.tech:~/$REPO_NAME
