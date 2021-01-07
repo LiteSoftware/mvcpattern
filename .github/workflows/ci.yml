@@ -53,3 +53,5 @@ jobs:
       
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" rsync -av -e ssh --exclude '.gitignore' --exclude '.git' --exclude '.github' $PWD gvozde0m_develop@gvozde0m.beget.tech:~
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "cd $REPO_NAME && composer-php7.3 update"
+      - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "cd $REPO_NAME && /usr/local/bin/php7.3 vendor/bin/doctrine orm:schema-tool:update --force"
+        
