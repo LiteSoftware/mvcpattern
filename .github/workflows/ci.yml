@@ -30,11 +30,14 @@ jobs:
       - uses: actions/checkout@v2
       - run: git clone https://${{Secrets.BITBUCKET_LOGIN}}:${{Secrets.BITBUCKET_PASSWORD}}@bitbucket.org/litesoftteam/securconfig.git
       - run: cp securconfig/db_params.php app/core/config/
+      - run: echo $HOME
       - run: ls
       - run: ls app/core/config/
 #       - run: ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
       
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "ls"
+#       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" rsync -av -e ssh --exclude '.gitignore' --exclude '.git' --exclude 'composer.lock' $PROJECT_DIR gvozde0m_develop@gvozde0m.beget.tech:~
+        
 #       - run: mkdir ~/.ssh; chmod 711 ~/.ssh
 #       - run: echo "${{Secrets.PRIVATE_KEY}}" >> ~/.ssh/id_rsa
 #       - run: cd ~/.ssh && ls -a
