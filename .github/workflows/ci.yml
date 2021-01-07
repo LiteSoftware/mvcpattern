@@ -37,9 +37,9 @@ jobs:
       - run: ls app/core/config/
       
       - run: echo ${{ github.repository }}
-      - run: echo $GITHUB_ACTIONS
+      - run: echo ${{ github.repository_owner }}
       
-      - run: echo ${${{ github.repository }}#${{ github.actor }}}
+      - run: echo ${${{ github.repository }}#${{ github.repository_owner }}}
 
 #     - run: ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
       
