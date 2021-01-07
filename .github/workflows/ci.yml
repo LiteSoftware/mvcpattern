@@ -34,6 +34,7 @@ jobs:
       - run: cp securconfig/db_params.php app/core/config/
       - run: rm -R securconfig
       - run: echo $HOME
+      - run: echo ~
       - run: ls
       - run: ls app/core/config/
       
@@ -52,7 +53,7 @@ jobs:
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "mkdir $REPO_NAME"
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "ls"
       
-      - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" rsync -av -e ssh --exclude 'runners/' --exclude 'composer.lock' --exclude=".*" $HOME gvozde0m_develop@gvozde0m.beget.tech:~/$REPO_NAME
+#       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" rsync -av -e ssh --exclude 'runners/' --exclude 'composer.lock' --exclude=".*" $HOME gvozde0m_develop@gvozde0m.beget.tech:~/$REPO_NAME
         
 #       - run: mkdir ~/.ssh; chmod 711 ~/.ssh
 #       - run: echo "${{Secrets.PRIVATE_KEY}}" >> ~/.ssh/id_rsa
