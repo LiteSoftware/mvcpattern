@@ -39,7 +39,14 @@ jobs:
       - run: echo ${{ github.repository }}
       - run: echo ${{ github.repository_owner }}
       - run: var=${{ github.repository }}
-      - run: echo ::set-env name=REPO_NAME::${{ github.repository.name }}
+      
+      - name: Dump github context
+        run:   echo "$GITHUB_CONTEXT"
+        shell: bash
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+      
+#       - run: echo ::set-env name=REPO_NAME::${{ github.repository.name }}
 
 #     - run: ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
       
