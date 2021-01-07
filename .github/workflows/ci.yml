@@ -39,8 +39,7 @@ jobs:
       - run: echo ${{ github.repository }}
       - run: echo ${{ github.repository_owner }}
       - run: var=${{ github.repository }}
-      - run: echo ${var##*/}
-      - run: echo ${var#${{ github.repository_owner }}}
+      - run: echo ${{ github.repository.name }}
 
 #     - run: ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
       
