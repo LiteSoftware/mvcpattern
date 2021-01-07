@@ -36,7 +36,7 @@ jobs:
       - run: ls
       - run: ls app/core/config/
       
-      - run: echo ${{ github.repository }}
+      - run: echo ${${{ github.repository }}#${{ github.actor }}}
 
 #     - run: ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
       
