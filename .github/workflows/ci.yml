@@ -26,8 +26,6 @@ jobs:
 #     needs: [lint, tests]
 #     if: github.ref == 'refs/heads/deploy_dev'
     runs-on: ubuntu-latest    
-#     env:
-#       PROJECT_NAME: авпр
     env:
       REPO_NAME: ${{ github.event.repository.name }}
     steps:
@@ -38,22 +36,18 @@ jobs:
       - run: ls
       - run: ls app/core/config/
       
-      - run: echo ${{ github.repository }}
-      - run: echo ${{ github.repository_owner }}
-      - run: var=${{ github.repository }}
-      
-      - name: Dump github context
-        run:   echo "$GITHUB_CONTEXT"
-        shell: bash
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+#       - name: Dump github context
+#         run:   echo "$GITHUB_CONTEXT"
+#         shell: bash
+#         env:
+#           GITHUB_CONTEXT: ${{ toJson(github) }}
       
       - run: echo $REPO_NAME
 
 #     - run: ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
       
       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "ls"
-#       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "mkdir "
+      - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh -t -o StrictHostKeyChecking=no gvozde0m_develop@gvozde0m.beget.tech "mkdir $REPO_NAME"
 #       - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" rsync -av -e ssh --exclude '.gitignore' --exclude '.git' --exclude 'composer.lock' $HOME gvozde0m_develop@gvozde0m.beget.tech:~
         
 #       - run: mkdir ~/.ssh; chmod 711 ~/.ssh
