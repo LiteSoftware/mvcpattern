@@ -34,7 +34,7 @@ jobs:
       - run: ls app/core/config/
 #       - run: ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
       
-      - run: sshpass -p ${{Secrets.BEGET_PASSWORD}} ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
+      - run: sshpass -p "${{Secrets.BEGET_PASSWORD}}" ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
 #       - run: mkdir ~/.ssh; chmod 711 ~/.ssh
 #       - run: echo "${{Secrets.PRIVATE_KEY}}" >> ~/.ssh/id_rsa
 #       - run: cd ~/.ssh && ls -a
