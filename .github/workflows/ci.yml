@@ -27,7 +27,9 @@ jobs:
 #     if: github.ref == 'refs/heads/deploy_dev'
     runs-on: ubuntu-latest    
 #     env:
-#       PROJECT_NAME: 
+#       PROJECT_NAME: авпр
+    env:
+      REPO_NAME: ${{ github.event.repository.name }}
     steps:
       - uses: actions/checkout@v2
       - run: git clone https://${{Secrets.BITBUCKET_LOGIN}}:${{Secrets.BITBUCKET_PASSWORD}}@bitbucket.org/litesoftteam/securconfig.git
@@ -46,7 +48,7 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
       
-#       - run: echo ::set-env name=REPO_NAME::${{ github.repository.name }}
+      - run: echo $REPO_NAME
 
 #     - run: ssh gvozde0m_develop@gvozde0m.beget.tech "ls"
       
